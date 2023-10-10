@@ -2,6 +2,12 @@
 
 namespace Opmvpc\Formes;
 
+use Opmvpc\Formes\Forme;
+use Opmvpc\Formes\Ligne;
+use Opmvpc\Formes\Cercle;
+use Opmvpc\Formes\Polygone;
+use Opmvpc\Formes\Rectangle;
+
 class Canvas extends Forme {
 
   
@@ -27,7 +33,7 @@ class Canvas extends Forme {
             return $this->formes;
         }  
 
-        public function add($forme): void{
+        public function add(Ligne|Cercle|Rectangle|Polygone $forme): void{
             $this->formes[] = $forme;
         }
     

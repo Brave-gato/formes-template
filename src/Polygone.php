@@ -12,7 +12,7 @@ class Polygone extends Forme {
         $this->points = $points;
     }
 
-    public function getPoints():Point{
+    public function getPoints():array{
         return $this->points;
     }
 
