@@ -17,14 +17,15 @@ use SVG\SVG;
 
 class SVGRenderer implements Renderer
 {
-    private Canvas $canvas;
+    protected Canvas $canvas;
 
     public function __construct(Canvas $canvas)
     {
         $this->canvas = $canvas;
     }
-    public function render(): string
-    {
+   
+
+    protected function getImage(){
         $image = new SVG($this->canvas->getWidth(), $this->canvas->getHeight());
         $doc = $image->getDocument();
 
@@ -59,10 +60,15 @@ class SVGRenderer implements Renderer
                 $doc->addChild($polyg);
             }
         }
-
-
-        return $image->toXMLString();
+            return $image;
     }
+
+    public function render(): string
+    {
+        $img = $this->getImage();
+        return $img->toXMLString();
+    }
+
     public function save(string $path): void
     {
         file_put_contents($path, $this->render());
